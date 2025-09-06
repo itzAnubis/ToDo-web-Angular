@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <a routerLink="/">MyApp</a>
+  </div>
+
+  <div class="nav-right">
+    <a routerLink="/dashboard" *ngIf="isLoggedIn()">Dashboard</a>
+    <a routerLink="/signin" *ngIf="!isLoggedIn()">Login</a>
+    <a routerLink="/signup" *ngIf="!isLoggedIn()">Sign Up</a>
+    <button (click)="logout()" *ngIf="isLoggedIn()">Logout</button>
+  </div>
+</nav>

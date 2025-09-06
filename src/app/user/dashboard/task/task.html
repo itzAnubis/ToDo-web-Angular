@@ -1,0 +1,42 @@
+<div class="card shadow-sm h-100">
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title">{{ task.title }}</h5>
+    <p class="card-text">{{ task.description }}</p>
+
+    <div class="mt-auto">
+      <span class="badge bg-{{ task.isCompleted ? 'success' : 'warning' }} mb-3">
+        {{ task.isCompleted ? '✅ Done' : '⏳ Pending' }}
+      </span>
+
+      <div class="btn-group w-100">
+        <button 
+          type="button" 
+          class="btn btn-outline-primary dropdown-toggle w-100" 
+          data-bs-toggle="dropdown" 
+          aria-expanded="false">
+          <i class="bi bi-gear"></i> Actions
+        </button>
+        <ul class="dropdown-menu w-100 text-center">
+          <li *ngIf="!task.isCompleted">
+            <a class="dropdown-item" href="#" (click)="onStatusChange(task, true); $event.preventDefault()">
+              <i class="bi bi-check-circle"></i> Mark as Done
+            </a>
+          </li>
+          <li *ngIf="task.isCompleted">
+            <a class="dropdown-item" href="#" (click)="onStatusChange(task, false); $event.preventDefault()">
+              <i class="bi bi-arrow-counterclockwise"></i> Mark as Pending
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li>
+            <a class="dropdown-item text-danger" href="#" (click)="onDeleteClick(task); $event.preventDefault()">
+              <i class="bi bi-trash"></i> Delete
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
